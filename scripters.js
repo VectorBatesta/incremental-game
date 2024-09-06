@@ -1,6 +1,7 @@
 
 
 function incrementar() {
+    console.log(gameVariables)
     gameVariables.clicksFodido++;
     document.getElementsByTagName("button")[0].textContent = gameVariables.clicksFodido + " vez fodido";
     //console.log(valor + " bananas")

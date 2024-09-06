@@ -6,14 +6,15 @@ let gameVariables = {
 }
 
 function game_onLoad(e) {
+    console.log(gameVariables)
     if (!JSON.parse(localStorage.getItem("saveStorage"))){
         gameVariables = JSON.parse(localStorage.getItem("saveStorage"))
     }
 }
 
-function game_onClose(e){
-    localStorage.setItem("saveStorage", JSON.stringify(gameVariables))
-}
+// function game_onClose(e){
+//     localStorage.setItem("saveStorage", JSON.stringify(gameVariables))
+// }
 
 
 
