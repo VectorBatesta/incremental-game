@@ -1,4 +1,4 @@
-
+import "./listeners.js"
 
 function incrementar() {
     console.log(gameVariables)
