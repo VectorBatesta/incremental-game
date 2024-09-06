@@ -1,11 +1,17 @@
-import "./listeners.js"
+import { gameVariables } from "./listeners.js"
 
-function incrementar() {
+
+
+
+export function incrementar() {
     console.log(gameVariables)
     gameVariables.clicksFodido++;
     document.getElementsByTagName("button")[0].textContent = gameVariables.clicksFodido + " vez fodido";
-    //console.log(valor + " bananas")
 }
+window.incrementar = incrementar
+
+
+
 
 
 const newElement = document.createElement("button");
