@@ -13,14 +13,6 @@ window.incrementar = incrementar
 
 
 
-const newElement = document.createElement("button");
-//https://developer.mozilla.org/en-US/docs/Web/HTML/Element#svg_and_mathml
-
-newElement.textContent = "Texto bisgolento!";
-//https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
-newElement.onclick = incrementar;
-
-document.getElementsByTagName("body")[0].appendChild(newElement);
 
 
 
@@ -53,3 +45,48 @@ const fasterButton = document.createElement("button");
 fasterButton.textContent = "faster!!";
 fasterButton.onclick = faster;
 document.getElementsByTagName("body")[0].appendChild(fasterButton);
+
+const newline = document.createElement("br");
+document.body.appendChild(newline)
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////
+// const canvaTest = document.createElement("canvas");
+// canvaTest.id = 'canvaTestID'
+// canvaTest.width = 300;
+// canvaTest.height = 300;
+// canvaTest.style = "border:1px solid grey";
+// document.getElementsByTagName("body")[0].appendChild(canvaTest)
+
+// //temp
+// canvaTest.height = 200;
+
+// //none = disappear
+// canvaTest.style.display = 'a'
+///////////////////////////////////////////////////////
+
+
+
+const newElement = document.createElement("button");
+newElement.textContent = "Texto bisgolento!";
+newElement.onclick = incrementar;
+
+// document.body.appendChild(newElement);
+
+
+
+
+
+//div com bagulhos
+const dividendo = document.createElement("div");
+dividendo.appendChild(newElement)
+dividendo.className = 'banana'
+
+document.body.appendChild(dividendo)

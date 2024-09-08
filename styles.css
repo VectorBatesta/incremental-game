@@ -14,3 +14,12 @@ p {
     color: purple;
     font-size: 100px;
 }
+
+.banana{
+    width: 150px;
+    height: 500px;
+    background-color: red;
+    align-content: center;
+    justify-content: space-between;
+    display: flex
+}
