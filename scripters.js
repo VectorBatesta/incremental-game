@@ -4,21 +4,10 @@ import { gameVariables } from "./listeners.js"
 
 
 export function incrementar() {
-    gameVariables.clicksFodido++;
-    document.getElementsByTagName("button")[0].textContent = gameVariables.clicksFodido + " vez fodido";
+    gameVariables.recurso++;
+    document.getElementById("recurso").textContent = gameVariables.recurso + " pontos";
 }
 window.incrementar = incrementar
-
-
-
-
-
-
-
-
-//const newElement = document.createElement("");
-
-
 
 function intervaloIncrementa(){
     incrementar()
@@ -29,35 +18,68 @@ function intervaloIncrementa(){
 var time = 1000
 var intervaloSetado = setInterval(intervaloIncrementa, time);
 
-
-
-
-
-
-
-
 function faster(){
     time--
     console.log(time)
 }
 
-const fasterButton = document.createElement("button");
-fasterButton.textContent = "faster!!";
-fasterButton.onclick = faster;
-document.getElementsByTagName("body")[0].appendChild(fasterButton);
-
-const newline = document.createElement("br");
-document.body.appendChild(newline)
 
 
 
 
 
 
+let divEsq = document.getElementById("divEsq");
+let divDir = document.getElementById("divDir");
+
+
+//////////////////////////////////////////////
+//constructors
+//////////////////////////////////////////////
+function newInteractable(){
+    var newDiv = document.createElement("div");
+    newDiv.className = "interactableButton";
+    newDiv.addEventListener("click", incrementar)
+    newDiv.textContent = "clica pra ganha ponto"
+
+    divEsq.appendChild(newDiv);
+}
+
+
+//temp
+newInteractable()
 
 
 
-///////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+// const fasterButton = document.createElement("button");
+// fasterButton.textContent = "faster!!";
+// fasterButton.onclick = faster;
+// document.getElementsByTagName("body")[0].appendChild(fasterButton);
+
+// const newline = document.createElement("br");
+// document.body.appendChild(newline)
+
 // const canvaTest = document.createElement("canvas");
 // canvaTest.id = 'canvaTestID'
 // canvaTest.width = 300;
@@ -74,19 +96,3 @@ document.body.appendChild(newline)
 
 
 
-const newElement = document.createElement("button");
-newElement.textContent = "Texto bisgolento!";
-newElement.onclick = incrementar;
-
-// document.body.appendChild(newElement);
-
-
-
-
-
-//div com bagulhos
-const dividendo = document.createElement("div");
-dividendo.appendChild(newElement)
-dividendo.className = 'banana'
-
-document.body.appendChild(dividendo)

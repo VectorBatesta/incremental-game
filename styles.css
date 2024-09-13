@@ -1,25 +1,91 @@
-/*defaults*/
-h1 {
-    color: limegreen;
-    width: auto;
-}
-p {
-    color: red
-}
-
-/*********************************/
-/*********************************/
-/*********************************/
-.topo{
-    color: purple;
-    font-size: 100px;
+#gameScreen{
+    position: absolute;
+    top: auto;
+    bottom: auto;
+    min-height: 100%;
+    height: 100%;
+    min-width: 100%;
+    height: 100%;
 }
 
-.banana{
-    width: 150px;
-    height: 500px;
-    background-color: red;
-    align-content: center;
-    justify-content: space-between;
-    display: flex
+
+
+
+
+
+.interactableButton{
+    height: 30px;
+    width: 50%;
+    border-width: 2px;
+    border-color: red;
+    border-style: ridge;
+    vertical-align: middle;
+    
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    user-select: none;
 }
+ :hover{
+    border-color: white;
+}
+
+
+
+
+
+
+.column{
+    min-height: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+#divEsq{
+    width: 25%;
+    max-width: 400px;
+    min-width: 300px;
+    padding-left: 100px;
+    padding-right: 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#divDir{
+    width: 50%;
+    max-width: 400px;
+    min-width: 300px;
+    padding-left: 100px;
+    padding-right: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/*
+element.style {
+    vertical-align: top;
+    font-size: 20px;
+}
+#leftColumn {
+    width: 25%;
+    max-width: 400px;
+    min-width: 300px;
+    padding-left: 100px;
+    padding-right: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#game * {
+    white-space: normal;
+}
+.scheme_dark div {
+    color: #DCDCDC;
+}
+.column {
+    min-height: 100%;
+    height: 100%;
+    display: inline-block;
+    margin-top: 4px;
+}
+*/
