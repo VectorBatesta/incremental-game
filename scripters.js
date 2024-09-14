@@ -33,26 +33,35 @@ let divEsq = document.getElementById("divEsq");
 let divDir = document.getElementById("divDir");
 
 
+
+
+
+
 //////////////////////////////////////////////
 //constructors
 //////////////////////////////////////////////
-function newInteractable(){
+
+
+
+/**
+* creates new div for a button on the game
+*
+* @param {string} texto what will be written
+* @param {function} funcao what function it uses when clicking
+*/
+function newButton(texto, funcao){
     var newDiv = document.createElement("div");
     newDiv.className = "interactableButton";
-    newDiv.addEventListener("click", incrementar)
-    newDiv.textContent = "clica pra ganha ponto"
+    newDiv.addEventListener("click", funcao)
+    newDiv.textContent = texto
 
     divEsq.appendChild(newDiv);
 }
 
 
 //temp
-newInteractable()
-
-
-
-
-
+newButton("clica pra ganha ponto", incrementar)
+newButton("MAI RAPIDO", faster)
 
 
 
