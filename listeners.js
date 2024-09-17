@@ -7,10 +7,11 @@ export let gameVariables = {
 
 function game_onLoad(e) {
     if (JSON.parse(localStorage.getItem("saveStorage"))){
-        gameVariables = JSON.parse(localStorage.getItem("saveStorage"))
+        gameVariables = JSON.parse(localStorage.getItem("saveStorage"));
     }
 
-    document.getElementById("recurso").textContent = gameVariables.recurso + " pontos"
+    document.getElementById("recurso").textContent = gameVariables.recurso + " pontos";
+    
 }
 
 function game_onClose(e){

@@ -16,7 +16,7 @@ function intervaloIncrementa(){
 }
 
 var time = 1000
-var intervaloSetado = setInterval(intervaloIncrementa, time);
+//var intervaloSetado = setInterval(intervaloIncrementa, time);
 
 function faster(){
     time--
@@ -29,40 +29,67 @@ function faster(){
 
 
 
-let divEsq = document.getElementById("divEsq");
-let divDir = document.getElementById("divDir");
-
 
 
 
 
 
 //////////////////////////////////////////////
-//constructors
+//constructors macros
 //////////////////////////////////////////////
-
-
 
 /**
-* creates new div for a button on the game
-*
-* @param {string} texto what will be written
-* @param {function} funcao what function it uses when clicking
-*/
-function newButton(texto, funcao){
+ * creates new div for a button on the game
+ *
+ * @param {string} texto what will be written
+ * @param {function} funcao what function it uses when clicking
+ */
+function newButton(id, texto, funcao){
     var newDiv = document.createElement("div");
+    newDiv.id = id;
     newDiv.className = "interactableButton";
-    newDiv.addEventListener("click", funcao)
-    newDiv.textContent = texto
+    newDiv.addEventListener("click", funcao);
+    newDiv.textContent = texto;
+    newDiv.style.visibility = "hidden";
 
     divEsq.appendChild(newDiv);
 }
 
 
-//temp
-newButton("clica pra ganha ponto", incrementar)
-newButton("MAI RAPIDO", faster)
 
+
+
+
+/**
+ * loads a screen to each of the tabs
+ * 
+ * @param {int} tabNumber the number of the tab
+ * 
+ */
+function screen(tabNumber){
+    for (var i of document.getElementsByClassName("tab")){
+        i.classList.remove("_visible");
+    }
+
+    switch(tabNumber){
+        case 1: //main
+            document.getElementById("tab1").classList.add("_visible");
+            break;
+        case 2: //
+            document.getElementById("tab2").classList.add("_visible");
+            break;
+    }
+}
+
+
+
+screen(2)
+
+
+
+//temp
+newButton(btn_ponto, "clica pra ganha ponto", incrementar)
+newButton(btn_fasterino, "MAI RAPIDO", faster)
 
 
 

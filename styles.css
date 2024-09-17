@@ -1,3 +1,23 @@
+/************/
+/** bypass **/
+/************/
+div{
+    display: block;
+}
+span{
+    font-size: 1.5em;
+}
+
+
+
+
+
+
+
+
+/***************/
+/** specifics **/
+/***************/
 #gameScreen{
     position: absolute;
     top: auto;
@@ -14,24 +34,58 @@
 }
 
 
+#tab1_divEsq{
+    width: 25%;
 
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 0px; 
 
-div{
-    display: block;
-    unicode-bidi: isolate;
+    grid-template-columns: 1fr 1fr;
+}
+
+#tab1_divCent{
+    width: 40%;
+    
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+#tab1_divDir{
+    width: 35%;
+    
+    padding-left: 20px;
+    padding-top: 10px;
 }
 
 
 
+#tab2_divEsq{
+    width: 40%;
+}
+
+#tab2_divDir{
+    width: 60%;
+}
+
+
+
+
+/*************/
+/** classes **/
+/*************/
 .interactableButton{
-    height: 20px;
+    height: 40px;
 
     border: solid 2px rgb(211, 211, 211);
-    padding: 10px 0 10px 10px;
+    padding: 10px 0 10px 0;
 
     vertical-align: middle;
     
     text-align: center;
+
+    display: flex;
+    justify-content: center;
 
     align-items: center;
     cursor: pointer;
@@ -54,59 +108,38 @@ div{
 
 
 
+
+._visible{
+    display: block;
+}
+
+.tab{
+    min-height: 100%;
+    height: 100%;
+    min-width: 100%;
+    height: 100%;
+}
+
+.tab:not(._visible){
+    display: none
+}
+
+
+
+
+
+
+
+
 .column{
     min-height: 100%;
     height: 100%;
-    display: inline-block;
-}
 
-#divEsq{
-    width: 25%;
-    max-width: 400px;
-    min-width: 300px;
-    padding-top: 40px;
-    padding-left: 100px;
-    padding-right: 0px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    float: left;
+    /* display: inline-block; */
+    /* position: fixed; */
+    border: 1px rgb(182, 182, 182);
+    border-style: dashed;
 
-    grid-template-columns: 1fr 1fr;
+    box-sizing: border-box;
 }
-
-#divDir{
-    width: 50%;
-    max-width: 400px;
-    min-width: 300px;
-    padding-left: 100px;
-    padding-right: 20px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-/*
-element.style {
-    vertical-align: top;
-    font-size: 20px;
-}
-#leftColumn {
-    width: 25%;
-    max-width: 400px;
-    min-width: 300px;
-    padding-left: 100px;
-    padding-right: 20px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-#game * {
-    white-space: normal;
-}
-.scheme_dark div {
-    color: #DCDCDC;
-}
-.column {
-    min-height: 100%;
-    height: 100%;
-    display: inline-block;
-    margin-top: 4px;
-}
-*/
