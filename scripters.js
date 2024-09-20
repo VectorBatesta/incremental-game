@@ -1,4 +1,4 @@
-import { gameVariables } from "./listeners.js"
+import { gameVariables, saveWipe } from "./listeners.js"
 
 
 
@@ -15,8 +15,8 @@ function intervaloIncrementa(){
     intervaloSetado = setInterval(intervaloIncrementa, time)
 }
 
-var time = 1000
-//var intervaloSetado = setInterval(intervaloIncrementa, time);
+let time = 1000
+//let intervaloSetado = setInterval(intervaloIncrementa, time);
 
 function faster(){
     time--
@@ -44,15 +44,15 @@ function faster(){
  * @param {string} texto what will be written
  * @param {function} funcao what function it uses when clicking
  */
-function newButton(id, texto, funcao){
-    var newDiv = document.createElement("div");
-    newDiv.id = id;
+function newButton(IDname, texto, funcao){
+    let newDiv = document.createElement("div");
+    newDiv.id = IDname;
     newDiv.className = "interactableButton";
     newDiv.addEventListener("click", funcao);
     newDiv.textContent = texto;
     newDiv.style.visibility = "hidden";
 
-    divEsq.appendChild(newDiv);
+    document.getElementById("tab1_divEsq").appendChild(newDiv);
 }
 
 
@@ -67,68 +67,55 @@ function newButton(id, texto, funcao){
  * 
  */
 function screen(tabNumber){
-    for (var i of document.getElementsByClassName("tab")){
+    for (let i of document.getElementsByClassName("tab")){
         i.classList.remove("_visible");
     }
 
-    switch(tabNumber){
-        case 1: //main
-            document.getElementById("tab1").classList.add("_visible");
-            break;
-        case 2: //
-            document.getElementById("tab2").classList.add("_visible");
-            break;
-    }
+    let tabName = "tab"
+    tabName = tabName + tabNumber
+
+    document.getElementById(tabName).classList.add("_visible");
 }
 
 
 
-screen(2)
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+
+
+
+
+
+screen(1)
 
 
 
 //temp
-newButton(btn_ponto, "clica pra ganha ponto", incrementar)
-newButton(btn_fasterino, "MAI RAPIDO", faster)
+newButton("btn_ponto", "clica pra ganha ponto", incrementar)
+newButton("btn_fasterino", "MAI RAPIDO", faster)
+newButton("btn_saveWipe", "TERMINATE SAVE", saveWipe)
+
+document.getElementById("btn_ponto").style.visibility = "visible"
+document.getElementById("btn_fasterino").style.visibility = "visible"
+document.getElementById("btn_saveWipe").style.visibility = "visible"
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////
-// const fasterButton = document.createElement("button");
-// fasterButton.textContent = "faster!!";
-// fasterButton.onclick = faster;
-// document.getElementsByTagName("body")[0].appendChild(fasterButton);
-
-// const newline = document.createElement("br");
-// document.body.appendChild(newline)
-
-// const canvaTest = document.createElement("canvas");
-// canvaTest.id = 'canvaTestID'
-// canvaTest.width = 300;
-// canvaTest.height = 300;
-// canvaTest.style = "border:1px solid grey";
-// document.getElementsByTagName("body")[0].appendChild(canvaTest)
-
-// //temp
-// canvaTest.height = 200;
-
-// //none = disappear
-// canvaTest.style.display = 'a'
-///////////////////////////////////////////////////////
 
 
 

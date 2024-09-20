@@ -29,7 +29,7 @@ span{
 
     color: rgb(235, 235, 235);
 
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman';
     font-size: 20px;
 }
 
@@ -54,7 +54,8 @@ span{
 #tab1_divDir{
     width: 35%;
     
-    padding-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 10px;
 }
 
@@ -77,8 +78,8 @@ span{
 .interactableButton{
     height: 40px;
 
-    border: solid 2px rgb(211, 211, 211);
-    padding: 10px 0 10px 0;
+    border: solid 3px rgb(211, 211, 211);
+    padding: 2px 0 2px 0;
 
     vertical-align: middle;
     
@@ -92,7 +93,7 @@ span{
 
     user-select: none;
 
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     
     border-radius: 10%;
 }
@@ -123,6 +124,32 @@ span{
 .tab:not(._visible){
     display: none
 }
+
+
+
+
+
+/* ul */
+.loreList{
+    list-style-type: circle;
+    padding-left: 20px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* li */
+.lore::marker{
+    display: block;
+    margin-bottom: 0px;
+    box-sizing: border-box;
+    list-style-position: inside
+}
+
+
 
 
 
