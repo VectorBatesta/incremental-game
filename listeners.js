@@ -6,7 +6,14 @@ window.addEventListener("beforeunload", (e) => game_onClose(e));
 
 export let gameVariables = {
     recurso: 0,
-    lore: ["test", "teste"]
+    lore: ["You wake up in the middle of nowhere."],
+    status: [
+
+    ],
+    resources: {
+        test: 1,
+        test2: 10
+    }
 }
 
 /**
@@ -17,7 +24,14 @@ export let gameVariables = {
 export function saveWipe(){
     gameVariables = {
         recurso: 0,
-        lore: ["> there once was a man from Thahrhxhrahxhxhasx and he tried eating batatas... then he died a death", "teste"]
+        lore: ["You wake up in the middle of nowhere."],
+        status: [
+        
+        ],
+        resources: {
+            test: 1,
+            test2: 10
+        }
     }
 }
 
@@ -27,12 +41,11 @@ export function saveWipe(){
 
 
 function game_onLoad(e) {
-    if (JSON.parse(localStorage.getItem("saveStorage"))){
-        gameVariables = JSON.parse(localStorage.getItem("saveStorage"));
+    let getSave = JSON.parse(localStorage.getItem("saveStorage"));
+    if (getSave){ //loads save if there is one
+        gameVariables = getSave;
     }
 
-    //modify this in a way that gets all resources and prints on the correct div
-    document.getElementById("recurso").textContent = gameVariables.recurso + " pontos";
     
     let loreListDivs = document.getElementsByClassName("loreList");
 
@@ -52,7 +65,47 @@ function game_onClose(e){
 
 
 
-// localStorage.setItem("nomeDaChave", JSON.stringify(OBJETO))
 
-// JSON.parse(localStorage.getItem("nomeDaChave"))
 
+
+
+
+
+
+
+
+/////TODO:
+//function updateLore() - self-calls
+//function updateStatus() - self-calls
+//function updateButtons() - self-calls
+//function updateResources() - self-calls
+
+
+
+
+
+
+
+
+
+
+
+let updateResourcesInterval = setInterval(updateResources, 100);
+function updateResources(){
+    const resources = Object.keys(gameVariables.resources);
+
+    for (let i = 0; i < resources.length; i++) {
+        let listItem = document.getElementsByClassName(resources[i])[0];
+    
+        if (!listItem) {
+            listItem = document.createElement('li');
+            listItem.classList.add(resources[i]);
+            
+            for (let iterList of document.getElementsByClassName("resourceList")){
+                iterList.appendChild(listItem);
+            }
+        }
+    
+        listItem.textContent = `${resources[i]}: ${gameVariables.resources[resources[i]]}`;
+    }
+}

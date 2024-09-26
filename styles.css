@@ -7,7 +7,13 @@ div{
 span{
     font-size: 1.5em;
 }
-
+p{
+    font-size: 1.5em;
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
 
 
 
@@ -37,9 +43,6 @@ span{
 #tab1_divEsq{
     width: 25%;
 
-    padding-top: 40px;
-    padding-left: 20px;
-    padding-right: 0px; 
 
     grid-template-columns: 1fr 1fr;
 }
@@ -47,16 +50,11 @@ span{
 #tab1_divCent{
     width: 40%;
     
-    padding-left: 10px;
-    padding-right: 20px;
 }
 
 #tab1_divDir{
     width: 35%;
     
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
 }
 
 
@@ -105,15 +103,6 @@ span{
 }
 
 
-
-
-
-
-
-._visible{
-    display: block;
-}
-
 .tab{
     min-height: 100%;
     height: 100%;
@@ -121,6 +110,13 @@ span{
     height: 100%;
 }
 
+
+
+
+._visible{
+    display: flex;
+}
+.interactableButton:not(._visible),
 .tab:not(._visible){
     display: none
 }
@@ -152,6 +148,60 @@ span{
 
 
 
+/* ul */
+.statusList{
+    list-style-type: none;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* li - div*/
+.status{
+    display: flex;
+    width: 50%;
+    margin-bottom: 0px;
+    box-sizing: border-box;
+    list-style-position: inside
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ul */
+.resourceList {
+    list-style-type: none;
+    padding-left: 10px;
+    margin: 0;
+    width: 100%;
+    height: 70%;
+    box-sizing: border-box;
+}
+
+/* li - span */
+.resource {
+    list-style-type: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+
+
+
+
+
 
 
 
@@ -167,6 +217,10 @@ span{
     /* position: fixed; */
     border: 1px rgb(182, 182, 182);
     border-style: dashed;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
 
     box-sizing: border-box;
 }
