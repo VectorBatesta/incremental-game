@@ -4,35 +4,30 @@ window.addEventListener("beforeunload", (e) => game_onClose(e));
 
 
 
-export let gameVariables = {
-    recurso: 0,
-    lore: ["You wake up in the middle of nowhere."],
+let wipedSave = {
     status: [
 
     ],
     resources: {
-        test: 1,
-        test2: 10
-    }
+        essence: [0, 10]
+    },
+    wipingSave: true
 }
 
+//this will get the things above even if it's the first time starting up the game
+export let gameVariables = wipedSave;
+
 /**
- * wipes save
+ * wipes save.
  * 
  * @param {object} gameVariables the game's variables
  */
 export function saveWipe(){
-    gameVariables = {
-        recurso: 0,
-        lore: ["You wake up in the middle of nowhere."],
-        status: [
-        
-        ],
-        resources: {
-            test: 1,
-            test2: 10
-        }
-    }
+    gameVariables = wipedSave;
+
+    console.log(gameVariables.wipingSave);
+
+    location.reload(true);
 }
 
 
@@ -42,21 +37,31 @@ export function saveWipe(){
 
 function game_onLoad(e) {
     let getSave = JSON.parse(localStorage.getItem("saveStorage"));
+
     if (getSave){ //loads save if there is one
         gameVariables = getSave;
     }
+    else{ //if new save:
+    }
+
+
+
 
     
-    let loreListDivs = document.getElementsByClassName("loreList");
+    let loreList = document.getElementById("loreList");
+    let welcomeLore = document.createElement("li");
+    welcomeLore.classList.add("lore");
 
-    for (let loreList of loreListDivs){ //ul
-        for (let i of gameVariables.lore){ //li
-            let lore = document.createElement("li");
-            lore.className = "lore";
-            lore.textContent = i;
-            loreList.appendChild(lore);
-        }
+    if (gameVariables.wipingSave){
+        welcomeLore.classList.add("newLore");
+        welcomeLore.textContent = "You wake up in the middle of nowhere.";
+
+        gameVariables.wipingSave = false;
     }
+    else{
+        welcomeLore.textContent = "You wake up again, at the same place you were before.";
+    }
+    loreList.appendChild(welcomeLore);
 }
 
 function game_onClose(e){
@@ -82,19 +87,25 @@ function game_onClose(e){
 
 
 
+///////////////////////////////////////////////
+// variable manipulation or automatic things //
+///////////////////////////////////////////////
+
+
+export function fixMaxAll(){
+    for (let resource in gameVariables.resources){
+        if (gameVariables.resources[resource][0] > gameVariables.resources[resource][1])
+            gameVariables.resources[resource][0] = gameVariables.resources[resource][1];
+    }
+}
 
 
 
-
-
-
-
-
-let updateResourcesInterval = setInterval(updateResources, 100);
-function updateResources(){
+let updateResourcesInterval = setInterval(updateResourcesDisplay, 100);
+export function updateResourcesDisplay(){
     const resources = Object.keys(gameVariables.resources);
 
-    for (let i = 0; i < resources.length; i++) {
+    for (let i = 0; (i < resources.length) && gameVariables.resources[resources[i]][0] > 0; i++) {
         let listItem = document.getElementsByClassName(resources[i])[0];
     
         if (!listItem) {
@@ -106,6 +117,6 @@ function updateResources(){
             }
         }
     
-        listItem.textContent = `${resources[i]}: ${gameVariables.resources[resources[i]]}`;
+        listItem.textContent = `${resources[i].toUpperCase()}: ${gameVariables.resources[resources[i]][0]}`;
     }
 }
