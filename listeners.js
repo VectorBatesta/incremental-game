@@ -5,9 +5,12 @@ window.addEventListener("beforeunload", (e) => game_onClose(e));
 
 
 let wipedSave = {
-    status: [
+    status: {
 
-    ],
+    },
+    modifiers: {
+        focusHindrance: 100 //less = focus more efficient
+    },
     resources: {
         essence: [0, 10]
     },
@@ -59,7 +62,7 @@ function game_onLoad(e) {
         gameVariables.wipingSave = false;
     }
     else{
-        welcomeLore.textContent = "You wake up again, at the same place you were before.";
+        welcomeLore.textContent = "You wake up where you left off.";
     }
     loreList.appendChild(welcomeLore);
 }
@@ -101,9 +104,18 @@ export function fixMaxAll(){
 
 
 
-let updateResourcesInterval = setInterval(updateResourcesDisplay, 100);
+
+
+
+
+
+
+/**
+ * goes through all the text banners of resources on the screen and modifies them according to the resources the player have
+ */
 export function updateResourcesDisplay(){
     const resources = Object.keys(gameVariables.resources);
+
 
     for (let i = 0; (i < resources.length) && gameVariables.resources[resources[i]][0] > 0; i++) {
         let listItem = document.getElementsByClassName(resources[i])[0];
@@ -117,6 +129,38 @@ export function updateResourcesDisplay(){
             }
         }
     
-        listItem.textContent = `${resources[i].toUpperCase()}: ${gameVariables.resources[resources[i]][0]}`;
+        listItem.textContent = `${resources[i].toUpperCase()}: ${gameVariables.resources[resources[i]][0].toFixed(2)}`;
     }
 }
+let updateResourcesInterval = setInterval(updateResourcesDisplay, 100);
+
+
+
+
+
+
+/**
+ * goes through all the effect banners and modify them according to the modifiers that the player have
+ */
+export function updateEffectsDisplay(){
+    let statuses = document.getElementsByClassName("status");
+
+    //finds the LI that is related to the index within the given div
+    function getTextByIndex(div, number){
+        let indexCode = "#buff" + number;
+        return div.querySelector(indexCode);
+    }
+
+    //goes through all status banners that are divs and have ULs with one or more LIs
+    for (let iterStatuses of statuses){
+        switch (iterStatuses.id){
+            case "focusHindrance":
+                let element = getTextByIndex(iterStatuses, 0);
+                element.textContent = "Hindrance: " + gameVariables.modifiers.focusHindrance;
+                break;
+            default:
+                break;
+        }
+    }
+}
+let updateEffectsInterval = setInterval(updateEffectsDisplay, 100);

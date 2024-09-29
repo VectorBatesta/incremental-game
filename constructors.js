@@ -72,9 +72,12 @@ export function newHoldableButton(IDname, texto, funcao, intervalTime) {
 /**
  * creates an effect element
  * 
- * 
+ * @param {string} effectId the name/id for the effect
+ * @param {string} imageName the location for the image with the image type ("something.png")
+ * @param {string} title the text that goes above
+ * @param {Array} buffs array of strings for each of the buffs 
  */
-export function newStatusEffect(effectId, imageName, title, buffs){
+export function newStatusEffect(effectId, imageName, title, descr, amountBuffs, curse = false){
     let statusLists = document.getElementsByClassName("statusList");
 
     for (let statusList of statusLists){
@@ -82,37 +85,45 @@ export function newStatusEffect(effectId, imageName, title, buffs){
         let effect = document.createElement("div");
         effect.id = effectId;
         effect.className = "status";
+        if (curse == true){
+            effect.classList.add("debuff");
+        }
 
         //img
         let effect_image = document.createElement("img");
-        effect_image.src = imageName
+        effect_image.src = "imgs/" + imageName;
         effect_image.width = "60";
         effect_image.height = "60";
 
-        //description title
-        let effect_descr = document.createElement("div");
+        //title
+        let effect_block = document.createElement("div");
         let effect_descr_title = document.createElement("span");
-        effect_descr_title.textContent = title
+        effect_descr_title.textContent = title;
+        
+        //description
+        let effect_descr = document.createElement("div");
+        effect_descr.textContent = descr;
 
-        //description's buff list
-        let effect_descr_buffs = document.createElement("ul");
-        for(let i = 0; i < buffs.length; i++){
+        //buff list
+        let effect_buffs = document.createElement("ul");
+        for(let i = 0; i < amountBuffs; i++){
             let newLi = document.createElement("li");
             newLi.id = "buff" + i;
-            newLi.textContent = buffs[i];
+            newLi.className = "effect_buff_text";
 
-            effect_descr_buffs.appendChild(newLi);
+            effect_buffs.appendChild(newLi);
         }
 
 
         //
         //
         ////////////
-        effect_descr.appendChild(effect_descr_title);
-        effect_descr.appendChild(effect_descr_buffs);
+        effect_block.appendChild(effect_descr_title);
+        effect_block.appendChild(effect_descr);
+        effect_block.appendChild(effect_buffs);
 
         effect.appendChild(effect_image);
-        effect.appendChild(effect_descr);
+        effect.appendChild(effect_block);
 
         statusList.appendChild(effect);
         ////////////

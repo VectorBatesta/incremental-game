@@ -41,15 +41,29 @@ import * as constructor from "./constructors.js"
 
 
 
-export function focus() {
+function focus(){
     let { essence } = gameVariables.resources;
-    essence[0]++;
-    console.log(essence)
+    let { focusHindrance } = gameVariables.modifiers;
+    
+    //TODO: sound
 
-    fixMaxAll();
-    updateResourcesDisplay();
+
+
+    //variable for the growth based on logarithmic scaling
+    let growth = 1 - (essence[0] / essence[1]);
+    // /\ goes from (1 - 0%) to (1 - 100%)
+
+    //apply dampening of the dampening
+    if (focusHindrance > 0){
+        growth = Math.pow(growth, focusHindrance / 10);
+    }
+
+    //increment actual essence by the variable
+    essence[0] += growth;
+
+    fixMaxAll(); //detect if current > max
+    updateResourcesDisplay(); //update immediately
 }
-
 
 
 
@@ -94,9 +108,8 @@ btn_saveWipe.classList.add("_visible")
 
 
 
+// constructor.newStatusEffect("test", "broken_bone.png", "title test", ["bufftest", "bufftest2"], true)
 
-
-constructor.newStatusEffect("test", "imgs/broken_bone.png", "title test", ["bufftest", "bufftest2"])
-
+constructor.newStatusEffect("focusHindrance", "broken_bone.png", "Focus Hindrance", "Your focus is being obstructed by something.", 1, true)
 
 
