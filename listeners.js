@@ -156,7 +156,7 @@ export function updateEffectsDisplay(){
         switch (iterStatuses.id){
             case "focusHindrance":
                 let element = getTextByIndex(iterStatuses, 0);
-                element.textContent = "Hindrance: " + gameVariables.modifiers.focusHindrance;
+                element.textContent = "Focus interference: " + gameVariables.modifiers.focusHindrance;
                 break;
             default:
                 break;

@@ -110,6 +110,6 @@ btn_saveWipe.classList.add("_visible")
 
 // constructor.newStatusEffect("test", "broken_bone.png", "title test", ["bufftest", "bufftest2"], true)
 
-constructor.newStatusEffect("focusHindrance", "broken_bone.png", "Focus Hindrance", "Your focus is being obstructed by something.", 1, true)
+constructor.newStatusEffect("focusHindrance", "placeholder.png", "Focus Hindrance", "Your focus is being obstructed by something.", 1, true)
 
 
