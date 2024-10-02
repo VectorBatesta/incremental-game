@@ -10,7 +10,7 @@
  * @param {string} texto what will be written
  * @param {function} funcao what function it uses when clicking
  */
-export function newButton(IDname, texto, funcao){
+function newButton(IDname, texto, funcao){
     let newDiv = document.createElement("div");
     newDiv.id = IDname;
     newDiv.className = "interactableButton";
@@ -32,7 +32,7 @@ export function newButton(IDname, texto, funcao){
  * @param {function} funcao the function to run repeatedly while holding down
  * @param {int} intervalTime the time interval in ms for how often the function will execute
  */
-export function newHoldableButton(IDname, texto, funcao, intervalTime) {
+function newHoldableButton(IDname, texto, funcao, intervalTime) {
     let newDiv = document.createElement("div");
     newDiv.id = IDname;
     newDiv.className = "interactableButton";
@@ -77,7 +77,7 @@ export function newHoldableButton(IDname, texto, funcao, intervalTime) {
  * @param {string} title the text that goes above
  * @param {Array} buffs array of strings for each of the buffs 
  */
-export function newStatusEffect(effectId, imageName, title, descr, amountBuffs, curse = false){
+function newStatusEffect(effectId, imageName, title, descr, amountBuffs, curse = false){
     let statusLists = document.getElementsByClassName("statusList");
 
     for (let statusList of statusLists){
@@ -108,7 +108,6 @@ export function newStatusEffect(effectId, imageName, title, descr, amountBuffs, 
         let effect_buffs = document.createElement("ul");
         for(let i = 0; i < amountBuffs; i++){
             let newLi = document.createElement("li");
-            newLi.id = "buff" + i;
             newLi.className = "effect_buff_text";
 
             effect_buffs.appendChild(newLi);
@@ -145,13 +144,12 @@ export function newStatusEffect(effectId, imageName, title, descr, amountBuffs, 
  * @param {int} tabNumber the number of the tab
  * 
  */
-export function screen(tabNumber){
+function screen(tabNumber){
     for (let i of document.getElementsByClassName("tab")){
         i.classList.remove("_visible");
     }
 
-    let tabName = "tab";
-    tabName = tabName + tabNumber;
+    let tabName = "tab" + tabNumber;
 
     document.getElementById(tabName).classList.add("_visible");
 }

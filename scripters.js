@@ -1,5 +1,4 @@
-import { gameVariables, saveWipe, updateResourcesDisplay, fixMaxAll } from "./listeners.js"
-import * as constructor from "./constructors.js"
+
 
 
 
@@ -92,13 +91,13 @@ function focus(){
 
 
 
-constructor.screen(1)
+screen(1)
 
 
 
 //temp
-let btn_focus = constructor.newHoldableButton("btn_focus", "Focus", focus, 500);
-let btn_saveWipe = constructor.newButton("btn_saveWipe", "TERMINATE SAVE", saveWipe);
+let btn_focus = newHoldableButton("btn_focus", "Focus", focus, 500);
+let btn_saveWipe = newButton("btn_saveWipe", "TERMINATE SAVE", saveWipe);
 
 btn_focus.classList.add("_visible")
 btn_saveWipe.classList.add("_visible")
@@ -108,8 +107,8 @@ btn_saveWipe.classList.add("_visible")
 
 
 
-// constructor.newStatusEffect("test", "broken_bone.png", "title test", ["bufftest", "bufftest2"], true)
+// newStatusEffect("test", "broken_bone.png", "title test", ["bufftest", "bufftest2"], true)
 
-constructor.newStatusEffect("focusHindrance", "placeholder.png", "Focus Hindrance", "Your focus is being obstructed by something.", 1, true)
+newStatusEffect("focusHindrance", "placeholder.png", "Focus Hindrance", "Your focus is being obstructed by something.", 2, true)
 
 

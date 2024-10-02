@@ -18,14 +18,14 @@ let wipedSave = {
 }
 
 //this will get the things above even if it's the first time starting up the game
-export let gameVariables = wipedSave;
+let gameVariables = wipedSave;
 
 /**
  * wipes save.
  * 
  * @param {object} gameVariables the game's variables
  */
-export function saveWipe(){
+function saveWipe(){
     gameVariables = wipedSave;
 
     console.log(gameVariables.wipingSave);
@@ -95,7 +95,7 @@ function game_onClose(e){
 ///////////////////////////////////////////////
 
 
-export function fixMaxAll(){
+function fixMaxAll(){
     for (let resource in gameVariables.resources){
         if (gameVariables.resources[resource][0] > gameVariables.resources[resource][1])
             gameVariables.resources[resource][0] = gameVariables.resources[resource][1];
@@ -113,7 +113,7 @@ export function fixMaxAll(){
 /**
  * goes through all the text banners of resources on the screen and modifies them according to the resources the player have
  */
-export function updateResourcesDisplay(){
+function updateResourcesDisplay(){
     const resources = Object.keys(gameVariables.resources);
 
 
@@ -142,25 +142,48 @@ let updateResourcesInterval = setInterval(updateResourcesDisplay, 100);
 /**
  * goes through all the effect banners and modify them according to the modifiers that the player have
  */
-export function updateEffectsDisplay(){
+function updateEffectsDisplay(){
     let statuses = document.getElementsByClassName("status");
+    let element;
 
-    //finds the LI that is related to the index within the given div
-    function getTextByIndex(div, number){
-        let indexCode = "#buff" + number;
-        return div.querySelector(indexCode);
+    function macro(num){
+        return "a"
     }
 
     //goes through all status banners that are divs and have ULs with one or more LIs
     for (let iterStatuses of statuses){
+        
         switch (iterStatuses.id){
             case "focusHindrance":
-                let element = getTextByIndex(iterStatuses, 0);
-                element.textContent = "Focus interference: " + gameVariables.modifiers.focusHindrance;
+                //TODO: prettier this shet
+                element = iterStatuses.querySelectorAll(".effect_buff_text")[0].textContent = "(buff0) Focus interference: " + gameVariables.modifiers.focusHindrance;
+
+                element = iterStatuses.querySelectorAll(".effect_buff_text")[1].textContent = "(buff1) Focus interference: " + gameVariables.resources.essence[0].toFixed(2);
                 break;
+
             default:
                 break;
         }
     }
 }
 let updateEffectsInterval = setInterval(updateEffectsDisplay, 100);
+
+
+
+
+
+
+
+
+
+
+
+//TODO
+
+/**
+ * does various detections on the variables and/or other things that may happen when the player reach somewhere
+ */
+function progressionDetection(){
+
+}
+let doProgressionDetection = setInterval(progressionDetection, 100);
